@@ -124,5 +124,21 @@ energy_data.head(n = 5)
 
 
 get_ipython().system('jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace preprocessing.ipynb')
+get_ipython().system('jupyter nbconvert --to script preprocessing.ipynb')
 
+
+
+
+# Saving files in Data_processed folder       
+
+# In[ ]:
+
+
+# Saving path to Data_processed folder
+saving_path = "../Data_processed/"
+
+#save cleaned data
+co2_data.to_csv(os.path.join(saving_path, "cleaned_co2_data.csv"), index = False)
+energy_data.to_csv(os.path.join(saving_path, "cleaned_energy_data.csv"), index = False)
+air_data.to_csv(os.path.join(saving_path, "cleaned_air_data.csv"), index = False)
 
