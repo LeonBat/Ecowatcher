@@ -51,7 +51,7 @@ class CO2(Base):
     entity = Column(String)
     country_id = Column(Integer, ForeignKey("countries.country_id"))
     year = Column(Integer, nullable = False)
-    annual_co2_emmissions = Column(Float)
+    annual_co2_emissions = Column(Float)
 
     country = relationship("Countries", back_populates="co2_table")
 
