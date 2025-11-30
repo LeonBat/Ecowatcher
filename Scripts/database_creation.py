@@ -48,6 +48,7 @@ class CO2(Base):
     __tablename__ = "co2"
 
     id = Column(Integer, primary_key = True)
+    entity = Column(String)
     country_id = Column(Integer, ForeignKey("countries.country_id"))
     year = Column(Integer, nullable = False)
     annual_co2_emmissions = Column(Float)
@@ -58,6 +59,7 @@ class Energy(Base):
     __tablename__ = "energy"
 
     id = Column(Integer, primary_key = True)
+    entity = Column(String)
     country_id = Column(Integer, ForeignKey("countries.country_id"))
     year = Column(Integer, nullable = False)
     primary_energy_consumption = Column(Float)
@@ -68,6 +70,7 @@ class Air(Base):
     __tablename__ = "air"
 
     id = Column(Integer, primary_key = True)
+    entity = Column(String)
     country_id = Column(Integer, ForeignKey("countries.country_id"))
     year = Column(Integer, nullable = False)
     nitrogen = Column(Float)
@@ -81,6 +84,7 @@ class Air(Base):
 
 
 # Create tables in the database
+Base.metadata.drop_all(engine) # Drop existing tables for a clean slate
 Base.metadata.create_all(engine)
 
 # Test the connection and table creation
