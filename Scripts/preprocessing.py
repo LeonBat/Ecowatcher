@@ -120,6 +120,20 @@ co2_data.head(n = 5)
 energy_data.head(n = 5)
 
 
+# Creation of additional countries table
+
+# In[ ]:
+
+
+countries = pd.DataFrame()
+countries = air_data[["Entity", "Code"]].drop_duplicates()
+countries = countries.rename(columns = {"Entity": "name", "Code": "code"})
+countries["id"] = range(1, len(countries) + 1)
+#place id colunn first
+countries = countries[["id", "name", "code"]]
+countries.head(n = 5)
+
+
 # In[ ]:
 
 
@@ -141,4 +155,5 @@ saving_path = "../Data_processed/"
 co2_data.to_csv(os.path.join(saving_path, "cleaned_co2_data.csv"), index = False)
 energy_data.to_csv(os.path.join(saving_path, "cleaned_energy_data.csv"), index = False)
 air_data.to_csv(os.path.join(saving_path, "cleaned_air_data.csv"), index = False)
+countries.to_csv(os.path.join(saving_path, "countries.csv"), index = False)
 
